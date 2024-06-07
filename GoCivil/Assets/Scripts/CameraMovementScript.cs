@@ -7,6 +7,7 @@ public class CameraMovementScript : MonoBehaviour
     public float speed;
 
     private Vector3 cameraPosition;
+
     // Start is called before the first frame update
     void Start()
     {

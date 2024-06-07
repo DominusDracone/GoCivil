@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ClicablePlotScript : MonoBehaviour
 {
+    [SerializeField]
+    public GameObject plotMenu;
+    public int id;
+
     private Ray zrak;
     private Camera kamera;
     private RaycastHit meta;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +29,10 @@ public class ClicablePlotScript : MonoBehaviour
             {
                 if (meta.transform == transform)
                 {
-                    Debug.Log("Klikmuo");
-                }
+                    Debug.Log("Kliknuo");
+                    plotMenu.SetActive(true);
+                    plotMenu.GetComponent<PlotyMenuScript>().OdabraniPlot(this);
+                }                
             }
         }
     }
