@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,12 +9,16 @@ public class PlotyMenuScript : MonoBehaviour
 {
     public TextMeshProUGUI idtxt;
 
-    private ClicablePlotScript plot;
+    private PlotResursiScript plot;
 
-    internal void OdabraniPlot(ClicablePlotScript odabrani)
+    internal void OdabraniPlot(PlotResursiScript odabrani)
     {
         this.plot = odabrani;
-        idtxt.text = plot.id.ToString();
+        String text = "";
+        text = odabrani.id + "\n";
+        text = odabrani.plotStanje != PlotStanje.izgradjeno ? text + odabrani.plotStanje.ToString() + "\n" : text + odabrani.NazivZgrade() + "\n";
+        text = text + "\n" + odabrani.VratiResurse();
+        idtxt.text = text;
     }
 
     // Start is called before the first frame update

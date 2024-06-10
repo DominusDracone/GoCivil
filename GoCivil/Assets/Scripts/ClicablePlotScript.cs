@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,8 @@ public class ClicablePlotScript : MonoBehaviour
 {
     [SerializeField]
     public GameObject plotMenu;
-    public int id;
 
+    private PlotResursiScript plotResursiScript;
     private Ray zrak;
     private Camera kamera;
     private RaycastHit meta;
@@ -17,6 +18,7 @@ public class ClicablePlotScript : MonoBehaviour
     void Start()
     {
         kamera = Camera.main;
+        plotResursiScript = gameObject.GetComponent<PlotResursiScript>();
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class ClicablePlotScript : MonoBehaviour
                 {
                     Debug.Log("Kliknuo");
                     plotMenu.SetActive(true);
-                    plotMenu.GetComponent<PlotyMenuScript>().OdabraniPlot(this);
+                    plotMenu.GetComponent<PlotyMenuScript>().OdabraniPlot(plotResursiScript);
                 }                
             }
         }
