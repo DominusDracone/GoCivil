@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec63b97eb0b0b8c4fb55ac7714f04276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plotMenu: {fileID: 0}
+  plotMenu: {fileID: 2423665511587695828, guid: 2363cc91db045b340bbe52a6c10ce13e, type: 3}
 --- !u!114 &-2315797661704072390
 MonoBehaviour:
   m_ObjectHideFlags: 0

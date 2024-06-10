@@ -9,7 +9,7 @@ public class ClicablePlotScript : MonoBehaviour
     [SerializeField]
     public GameObject plotMenu;
 
-    private PlotResursiScript plotResursiScript;
+    private PlotStanjeScript plotResursiScript;
     private Ray zrak;
     private Camera kamera;
     private RaycastHit meta;
@@ -18,7 +18,7 @@ public class ClicablePlotScript : MonoBehaviour
     void Start()
     {
         kamera = Camera.main;
-        plotResursiScript = gameObject.GetComponent<PlotResursiScript>();
+        plotResursiScript = gameObject.GetComponent<PlotStanjeScript>();
     }
 
     // Update is called once per frame
@@ -33,7 +33,7 @@ public class ClicablePlotScript : MonoBehaviour
                 {
                     Debug.Log("Kliknuo");
                     plotMenu.SetActive(true);
-                    plotMenu.GetComponent<PlotyMenuScript>().OdabraniPlot(plotResursiScript);
+                    plotMenu.GetComponent<PlotMenuScript>().OdabraniPlot(plotResursiScript);
                 }                
             }
         }

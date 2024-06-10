@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts
 {
-    public enum PlotStanje
+    public enum PlotStanjeEnum
     {
         livada, kamenjar, suma ,izgradjeno
     }

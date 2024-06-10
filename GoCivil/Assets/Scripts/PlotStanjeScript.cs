@@ -1,10 +1,11 @@
 using Assets.Scripts;
+using Assets.Scripts.Zgrade;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlotResursiScript : MonoBehaviour
+public class PlotStanjeScript : MonoBehaviour
 {
     public int id;
     public int brLjudi;
@@ -20,8 +21,9 @@ public class PlotResursiScript : MonoBehaviour
 
     public List<GameObject> veze = new List<GameObject>();
     private List<VezaScript> vezeScripts = new List<VezaScript>();
+    private AZgrada zgrada;
 
-    internal PlotStanje plotStanje;
+    internal PlotStanjeEnum plotStanje;
 
 
     // Start is called before the first frame update
@@ -68,5 +70,29 @@ public class PlotResursiScript : MonoBehaviour
         }
 
         return text;
+    }
+
+    internal List<AZgrada> VratiZgradeZaZidanje()
+    {
+        List<AZgrada> zgrade = new List<AZgrada>();
+
+        if(zgrada == null)
+        {
+            zgrade.Add(new Naselje1());
+            zgrade.Add(new Kula());
+        }
+        else
+        {
+            zgrade = zgrada.VratiZgradeZaZidanje();
+        }
+
+        return zgrade;
+    }
+
+    internal void Izgradi(AZgrada aZgrada)
+    {
+        zgrada = aZgrada;
+        //animacija
+        Debug.Log("Izgradjeno");
     }
 }
