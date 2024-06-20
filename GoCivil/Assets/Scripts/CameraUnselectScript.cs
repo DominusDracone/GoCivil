@@ -23,7 +23,7 @@ public class CameraUnselectScript : MonoBehaviour
             if (!Physics.Raycast(zrak, out meta, 1000f))
             {
                 Debug.Log("Nije meta");
-                plotMenu.SetActive(false);
+                plotMenu.GetComponent<PlotMenuScript>().Deselect();
             }
         }
     }

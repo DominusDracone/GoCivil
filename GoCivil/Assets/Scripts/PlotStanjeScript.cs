@@ -8,19 +8,10 @@ using UnityEngine;
 public class PlotStanjeScript : MonoBehaviour
 {
     public int id;
-    public int brLjudi;
-    public int hrana;
-    public int drva;
-    public int gradja;
-    public int energent;
-    public int povBrLjudi;
-    public int povHrana;
-    public int povDrva;
-    public int povGradja;
-    public int povEnergent;
 
     public List<GameObject> veze = new List<GameObject>();
     private List<VezaScript> vezeScripts = new List<VezaScript>();
+    private List<AResursi> resursi = new List<AResursi>();
     private AZgrada zgrada;
 
     internal PlotStanjeEnum plotStanje;
@@ -48,25 +39,9 @@ public class PlotStanjeScript : MonoBehaviour
     internal string VratiResurse()
     {
         string text = "";
-        if (brLjudi != 0)
+        foreach (AResursi r in resursi)
         {
-            text = text + $"Ljudi: {brLjudi} (+{povBrLjudi})\n";
-        }
-        if (hrana != 0)
-        {
-            text = text + $"Hrana: {hrana} (+{povHrana})\n";
-        }
-        if (drva != 0)
-        {
-            text = text + $"Drva: {drva} (+{povDrva})\n";
-        }
-        if (gradja != 0)
-        {
-            text = text + $"Gradja: {gradja} (+{povGradja})\n";
-        }
-        if (energent != 0)
-        {
-            text = text + $"Energent: {energent} (+{povEnergent})\n";
+            text = text + $"\n{r}";
         }
 
         return text;
@@ -89,10 +64,20 @@ public class PlotStanjeScript : MonoBehaviour
         return zgrade;
     }
 
-    internal void Izgradi(AZgrada aZgrada)
+    internal void ZapocniIzgradnju(AZgrada z)
     {
-        zgrada = aZgrada;
-        //animacija
-        Debug.Log("Izgradjeno");
+        z.PlotId = id;
+        //postavljanje temelja i skela
+        //smanjivanje resursa i novac
+        z.Cena(resursi);
+        //dodavanje zgrade u listu zgrada za izgradnju
+        GameManager.Instance.ZapocniIzgradnju(z);
+    }
+
+    internal void Izgradi(AZgrada z)
+    {
+        //napraviti objekat, animacija i sl.
+        //promeniti stanje resursa
+        z.PromeniPrirastaj(resursi);
     }
 }

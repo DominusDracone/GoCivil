@@ -32,7 +32,6 @@ public class ClicablePlotScript : MonoBehaviour
                 if (meta.transform == transform)
                 {
                     Debug.Log("Kliknuo");
-                    plotMenu.SetActive(true);
                     plotMenu.GetComponent<PlotMenuScript>().OdabraniPlot(plotResursiScript);
                 }                
             }
